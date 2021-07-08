@@ -1,0 +1,87 @@
+<div class="row">
+  <div class="col-xs-12">
+    <h1 class="f-500">Solicitantes registrados</h1>
+  </div>
+</div>
+<form [formGroup]="form" (ngSubmit)="getClients()">
+  <div class="row">
+    <div class="col-xs-12 col-md-3 col-lg-3">
+      <mat-form-field appearance="legacy">
+        <mat-label>INE</mat-label>
+        <input matInput placeholder="Clave elector" formControlName="ine">
+      </mat-form-field>
+    </div>
+    <div class="col-xs-12 col-md-3 col-lg-3">
+      <mat-form-field appearance="legacy">
+        <mat-label>CURP</mat-label>
+        <input matInput placeholder="CURP" formControlName="curp">
+      </mat-form-field>
+    </div>
+    <div class="col-xs-12 col-md-3 col-lg-3">
+      <mat-form-field appearance="legacy">
+        <mat-label>RFC</mat-label>
+        <input matInput placeholder="RFC" formControlName="rfc">
+      </mat-form-field>
+    </div>
+    <div class="col-xs-12 col-md-3 col-lg-3">
+      <button mat-flat-button color="primary" type="submit">
+        Buscar
+      </button>
+    </div>
+  </div>
+</form>
+
+<div class="">
+  <table mat-table [dataSource]="dataSource">
+
+    <ng-container matColumnDef="1">
+      <th mat-header-cell *matHeaderCellDef> No. Ticket </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="2">
+      <th mat-header-cell *matHeaderCellDef> Nombre </th>
+      <td mat-cell *matCellDef="let element"> {{element.name + element.last_name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="3">
+      <th mat-header-cell *matHeaderCellDef> Clave de elector </th>
+      <td mat-cell *matCellDef="let element"> {{ element.elector_key }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="4">
+      <th mat-header-cell *matHeaderCellDef> CURP </th>
+      <td mat-cell *matCellDef="let element">{{ element.curp }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="5">
+      <th mat-header-cell *matHeaderCellDef> RFC </th>
+      <td mat-cell *matCellDef="let element">{{ element.rfc }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="6">
+      <th mat-header-cell *matHeaderCellDef> Estatus </th>
+      <td mat-cell *matCellDef="let element">
+        <span [ngClass]="{'color-green' : element.status.id === 4, 'color-blue' : element.status.id === 1 || element.status.id === 2 || element.status.id === 3}">
+          {{element.status.id  === 4 ? 'Atendido' : element.status.id === 1 ? 'Pendiente' : element.status.id === 2 ? 'Validación' : element.status.id === 3 ? 'Cotización' : ''}}
+        </span> </td>
+    </ng-container>
+
+    <ng-container matColumnDef="7">
+      <th mat-header-cell *matHeaderCellDef> Recepción </th>
+      <td mat-cell *matCellDef="let element">{{ element.created_at | formartDate }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="8">
+      <th mat-header-cell *matHeaderCellDef> Atender </th>
+      <td mat-cell *matCellDef="let element">
+        <button *ngIf="element.status.id !== 4" (click)="goCotizacion(element.id)" mat-icon-button><mat-icon class="icon-blue" svgIcon="arrow-right"></mat-icon></button>
+        <button *ngIf="element.status.id ===  4" mat-icon-button><mat-icon class="color-green" svgIcon="check-all"></mat-icon></button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-paginator [pageSizeOptions]="[10, 20]"></mat-paginator>
+</div>

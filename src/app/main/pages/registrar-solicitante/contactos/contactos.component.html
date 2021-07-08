@@ -1,0 +1,50 @@
+<div class="border">
+  <h3 class="f-500 color-blue">Relaciones:</h3>
+  <div class="row">
+    <div class="col-xs mr-5">
+      <p class="f-500 n-margin">Datos de pariente u otros contactos:</p>
+    </div>
+  </div>
+  <form [formGroup]="form" (ngSubmit)="addContact()" class="mt-10">
+    <div class="row">
+      <div class="col-xs">
+        <mat-form-field appearance="legacy">
+          <mat-label>Nombre</mat-label>
+          <input matInput placeholder="Nombre" formControlName="name">
+        </mat-form-field>
+      </div>
+      <div class="col-xs">
+        <mat-form-field appearance="legacy">
+          <mat-label>Teléfono</mat-label>
+          <input matInput placeholder="Teléfono" formControlName="cell_phone">
+        </mat-form-field>
+      </div>
+      <div class="col-xs">
+        <mat-form-field appearance="legacy">
+          <mat-label>Correo</mat-label>
+          <input matInput placeholder="Correo" formControlName="email">
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs center-xs">
+        <button mat-stroked-button type="submit" color="primary">Agregar contacto</button>
+      </div>
+    </div>
+  </form>
+  <div class="row middle-xs mt-10" *ngFor="let contact of contacts; let idx = index">
+    <div class="col-xs-3">
+      <p class="f-500 n-margin">{{ contact.name }}</p>
+    </div>
+    <div class="col-xs-3">
+      <p class="f-500 n-margin">{{ contact.cell_phone }}</p>
+
+    </div>
+    <div class="col-xs-3">
+      <p class="f-500 n-margin">{{ contact.email }}</p>
+    </div>
+    <div class="col-xs-3 center-xs">
+      <button mat-icon-button color="primary" (click)="delete(idx)"><mat-icon svgIcon="delete"></mat-icon></button>
+    </div>
+  </div>
+</div>

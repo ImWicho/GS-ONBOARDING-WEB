@@ -1,0 +1,122 @@
+/* You can add global styles to this file, and also import other style files */
+@import './assets/css/grid.css';
+@import './colors';
+html, body { height: 100%  }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+mat-form-field{ width: 100%; }
+
+@keyframes spinner {
+  to {transform: rotate(360deg);}
+}
+
+.spinner:before {
+  content: '';
+  box-sizing: border-box;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin-top: -10px;
+  margin-left: -10px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  border-top-color: white;
+  animation: spinner .8s linear infinite;
+}
+
+.spinner-blue:before {
+  content: '';
+  box-sizing: border-box;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin-top: -10px;
+  margin-left: -10px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  border-top-color: $primary;
+  animation: spinner .8s linear infinite;
+}
+
+.img-responsive{
+  width: 100%;
+  height: auto;
+}
+
+
+.icon-blue{
+  color: $primary;
+}
+
+.bg-sidenav{
+  background-color: $second;
+}
+
+form{
+  width: 100%;
+}
+
+.f-500{
+  font-weight: 500 !important;
+}
+
+table{
+  width: 100%;
+}
+
+.mat-table thead{
+  background: $primary;
+}
+.mat-table tbody{
+  background: #FDFDFD !important;
+}
+
+.mat-header-cell{
+  color: #ffffff;
+}
+
+.mat-paginator{
+  background: transparent;
+}
+
+.color-green{
+  color: #219653;
+}
+
+.color-red{
+  color: $primary;
+}
+
+.color-blue{
+  color: $primary;
+}
+
+.border{
+  border: 1px solid #E0E0E0;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.n-margin{
+  margin: 0 !important;
+}
+
+.mr-5{
+  margin-right: 5px !important;
+}
+
+.ml-5{
+  margin-right: 5px !important;
+}
+
+.mb-15{
+  margin-bottom: 15px;
+}
+
+.mt-10{
+  margin-top: 10px;
+}

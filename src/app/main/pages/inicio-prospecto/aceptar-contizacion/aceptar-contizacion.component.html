@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="col-xs-12">
+    <h1 class="f-500">Cotización enviada</h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+    <h2 class="f-500 color-blue">Se validó tu documentación y se envió la cotización de tu póliza</h2>
+  </div>
+</div>
+
+<div class="row center-xs">
+  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+    <div class="border">
+      <h3 class="f-500 color-blue">Vista previa: </h3>
+      <div class="row">
+        <div class="col-xs" style="min-height: 600px;">
+          <embed [src]="this.pdf | resourceSafe" style="width: 100%; height: 100%;" *ngIf="this.pdf">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs row between-xs" style="margin-top: 20px;">
+    <button mat-flat-button color="primary" [class.spinner]="loading" [disabled]="loading" (click)="sendData(false)">Rechazar</button>
+    <button mat-flat-button color="primary" [class.spinner]="loading" [disabled]="loading" (click)="sendData(true)">Aceptar</button>
+  </div>
+</div>

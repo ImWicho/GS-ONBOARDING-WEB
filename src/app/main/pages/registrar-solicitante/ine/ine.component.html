@@ -1,0 +1,22 @@
+<div class="border">
+  <h3 class="f-500 color-blue">Carga de Identificación:</h3>
+  <div class="row middle-xs">
+    <div class="col-xs mr-5">
+      <p class="f-500 n-margin">INE del solicitante:</p>
+    </div>
+    <div class="col-xs mr-5">
+      <app-get-files text="Subir imagen" types="image/png,image/jpeg" (files)="setImageFromDocuments($event)"></app-get-files>
+    </div>
+    <div class="col-xs">
+      <app-get-camera (getImage)="setImageFromCamera($event)"></app-get-camera>
+    </div>
+  </div>
+  <div class="row center-xs mt-10" *ngIf="ine">
+    <div class="col-xs wrap-image">
+      <img class="img-ine" [src]="ine"/>
+    </div>
+  </div>
+  <div class="row center-xs mt-10" *ngIf="loading">
+    <mat-spinner></mat-spinner>
+  </div>
+</div>

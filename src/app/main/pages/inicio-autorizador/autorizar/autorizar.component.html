@@ -1,0 +1,110 @@
+<div class="row">
+  <div class="col-xs-12">
+    <h1 class="f-500">Aceptar solicitante</h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs">
+    <div class="border">
+      <h3 class="f-500 color-blue">Identificación del solicitante:</h3>
+      <div class="row">
+        <div class="col-xs mr-5">
+          <mat-accordion>
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Información general
+                </mat-panel-title>
+                <mat-panel-description>
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <p><span>Nombre</span> : {{ client?.name }} {{ client?.last_name }}</p>
+              <p><span>RFC</span> : {{ client?.rfc }}</p>
+              <p><span>CURP</span> : {{ client?.curp }}</p>
+              <p><span>Dirección</span> : {{ client?.street }} {{ client?.ext_number }} {{ client?.colony }} {{ client?.city }} {{ client?.postal_code }}</p>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Datos de contacto
+                </mat-panel-title>
+                <mat-panel-description>
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <p><span>Correo electrónico</span> : {{ client?.email }}</p>
+              <p><span>Teléfono</span> : {{ client?.phone }}</p>
+              <p><span>Teléfono celular</span> : {{ client?.cell_phone }}</p>
+              <p><span>Teléfono trabajo</span> : {{ client?.work_phone }}</p>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Datos financieros
+                </mat-panel-title>
+                <mat-panel-description>
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <p><span>Tarjeta</span> : {{ client?.card_number }}</p>
+              <p><span>Fecha de expiración</span> : {{ client?.expiration_date }}</p>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Redes sociales
+                </mat-panel-title>
+                <mat-panel-description>
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <p><span>Facebook</span> : {{ client?.facebook }}</p>
+              <p><span>Twitter</span> : {{ client?.twitter }}</p>
+              <p><span>Linkedin</span> : {{ client?.linked_in }}</p>
+            </mat-expansion-panel>
+          </mat-accordion>
+          
+        </div>
+      </div>
+    </div>
+    <div class="border mt-10">
+      <h3 class="f-500 color-blue">Identificación del solicitante:</h3>
+      <div class="row">
+        <div class="col-xs">
+          <h3 class="f-500">Documentos</h3>
+        </div>
+        <div class="col-xs">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs">
+          <app-list-files [files]="files" (getFiles)="setFiles($event)"></app-list-files>
+        </div>
+        <div class="col-xs" >
+          <div class="row" *ngFor="let i of files; let idx = index">
+            <div class="col-xs-12">
+              <button mat-icon-button (click)="download(idx)" color="primary"><mat-icon svgIcon="download"></mat-icon></button>
+              <button mat-icon-button (click)="preview(idx)" color="primary"><mat-icon svgIcon="eye"></mat-icon></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs">
+    <div class="border">
+      <h3 class="f-500 color-blue">Vista previa: </h3>
+      <div class="row">
+        <div class="col-xs" style="min-height: 600px;">
+          <embed [src]="this.pdf | resourceSafe" style="width: 100%; height: 100%;" *ngIf="this.pdf && this.files.length !== 0">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs row between-xs" style="margin-top: 20px;">
+    <button mat-flat-button color="primary" (click)="back()">Regresar</button>
+    <button mat-flat-button color="primary" [class.spinner]="loading" [disabled]="loading" (click)="sendData()">Aceptar</button>
+  </div>
+</div>

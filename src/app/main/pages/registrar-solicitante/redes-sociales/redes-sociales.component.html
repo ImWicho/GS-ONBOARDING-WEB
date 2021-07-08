@@ -1,0 +1,40 @@
+<div class="border">
+  <h3 class="f-500 color-blue">Redes sociales:</h3>
+  <div class="row">
+    <div class="col-xs mr-5">
+      <p class="f-500 n-margin">Información general:</p>
+    </div>
+  </div>
+  <form [formGroup]="form">
+    <div class="row">
+      <div class="col-xs">
+        <mat-form-field>
+          <mat-label>Facebook</mat-label>
+          <input matInput placeholder="Facebook" formControlName="facebook" (keyup)="emit()" />
+        </mat-form-field>
+      </div>
+      <div class="col-xs">
+        <mat-form-field>
+          <mat-label>Twitter</mat-label>
+          <input
+            matInput
+            placeholder="Twitter"
+            formControlName="twitter"
+            (keyup)="emit()"
+          />
+        </mat-form-field>
+      </div>
+      <div class="col-xs">
+        <mat-form-field>
+          <mat-label>Linkedin</mat-label>
+          <input
+            matInput
+            placeholder="Linkedin"
+            formControlName="linked_in"
+            (keyup)="emit()"
+          />
+        </mat-form-field>
+      </div>
+    </div>
+  </form>
+</div>

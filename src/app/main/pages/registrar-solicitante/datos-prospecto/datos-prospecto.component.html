@@ -1,0 +1,288 @@
+<div class="border">
+  <form [formGroup]="form">
+    <h3 class="f-500 color-blue">Datos personales:</h3>
+    <div class="row">
+      <div class="col-xs mr-5">
+        <p class="f-500 n-margin">Información general:</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs">
+        <mat-form-field>
+          <mat-label>Nombre(s)</mat-label>
+          <input matInput placeholder="Nombre(s)" formControlName="name" (keyup)="emit()"/>
+        </mat-form-field>
+      </div>
+      <div class="col-xs">
+        <mat-form-field>
+          <mat-label>Apellido paterno</mat-label>
+          <input
+            matInput
+            placeholder="Apellido paterno"
+            formControlName="last_name"
+            (keyup)="emit()"
+          />
+        </mat-form-field>
+      </div>
+      <div class="col-xs">
+        <mat-form-field>
+          <mat-label>Apellido materno</mat-label>
+          <input
+            matInput
+            placeholder="Apellido materno"
+            formControlName="second_last_name"
+            (keyup)="emit()"
+          />
+        </mat-form-field>
+      </div>
+      <div class="col-xs">
+        <mat-form-field>
+          <mat-label>CURP</mat-label>
+          <input
+            matInput
+            placeholder="Apellido materno"
+            formControlName="curp"
+            (keyup)="emit()"
+          />
+        </mat-form-field>
+      </div>
+      <div class="col-xs">
+        <mat-form-field>
+          <mat-label>Clave de elector</mat-label>
+          <input
+            matInput
+            placeholder="Clave de elector"
+            formControlName="elector_key"
+            (keyup)="emit()"
+          />
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs mr-5">
+        <p class="f-500 n-margin">Información general:</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs">
+        <mat-form-field>
+          <mat-label>RFC</mat-label>
+          <input
+            matInput
+            placeholder="Apellido materno"
+            formControlName="rfc"
+            (keyup)="emit()"
+          />
+        </mat-form-field>
+      </div>
+      <div class="col-xs">
+        <button mat-stroked-button
+          color="primary"
+          type="button"
+          [disabled]="rfcValidate" 
+          [class.spinner-blue]="rfcValidate"
+          (click)="validateRFC()">Validar RFC</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs mr-5">
+        <p class="f-500 n-margin">Medios de contacto:</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs">
+        <mat-form-field>
+          <mat-label>Teléfono celular</mat-label>
+          <input
+            matInput
+            placeholder="Teléfono celular"
+            formControlName="cell_phone"
+            (keyup)="emit()"
+          />
+        </mat-form-field>
+      </div>
+      <div class="col-xs">
+        <mat-form-field>
+          <mat-label>Correo electrónico</mat-label>
+          <input
+            matInput
+            placeholder="Correo electrónico"
+            formControlName="email"
+            (keyup)="emit()"
+          />
+        </mat-form-field>
+      </div>
+      <div class="col-xs">
+        <mat-form-field>
+          <mat-label>Teléfono local</mat-label>
+          <input
+            matInput
+            placeholder="Teléfono local"
+            formControlName="phone"
+            (keyup)="emit()"
+          />
+        </mat-form-field>
+      </div>
+      <div class="col-xs">
+        <mat-form-field>
+          <mat-label>Teléfono de trabajo</mat-label>
+          <input
+            matInput
+            placeholder="Teléfono de trabajo"
+            formControlName="work_phone"
+            (keyup)="emit()"
+          />
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs mr-5">
+        <p class="f-500 n-margin">Domicilio Fiscal:</p>
+      </div>
+      <!-- <div class="col-xs mr-5">
+        <app-get-files
+          (files)="setFileFiscal($event)"
+          types="application/pdf"
+          text="Subir archivo"
+        ></app-get-files>
+      </div>
+      <div class="col-xs mr-5">
+        <app-list-files
+          [files]="archivoFiscal"
+          (getFiles)="setFileFiscal($event)"
+        ></app-list-files>
+      </div> -->
+    </div>
+    <div class="row">
+      <div class="col-xs">
+        <mat-form-field>
+          <mat-label>Calle</mat-label>
+          <input matInput placeholder="Calle" formControlName="street" (keyup)="emit()" />
+        </mat-form-field>
+      </div>
+      <div class="col-xs">
+        <mat-form-field>
+          <mat-label>Numero</mat-label>
+          <input matInput placeholder="Numero" formControlName="ext_number" (keyup)="emit()" />
+        </mat-form-field>
+      </div>
+      <div class="col-xs">
+        <mat-form-field>
+          <mat-label>Colonia</mat-label>
+          <input matInput placeholder="Colonia" formControlName="colony" (keyup)="emit()" />
+        </mat-form-field>
+      </div>
+      <div class="col-xs">
+        <mat-form-field>
+          <mat-label>Ciudad</mat-label>
+          <input matInput placeholder="Ciudad" formControlName="city" (keyup)="emit()" />
+        </mat-form-field>
+      </div>
+      <div class="col-xs">
+        <mat-form-field>
+          <mat-label>Delegación</mat-label>
+          <input
+            matInput
+            placeholder="Delegación"
+            formControlName="municipality"
+            (keyup)="emit()"
+          />
+        </mat-form-field>
+      </div>
+      <div class="col-xs">
+        <mat-form-field>
+          <mat-label>Estado</mat-label>
+          <input matInput placeholder="Estado" formControlName="state" (keyup)="emit()" />
+        </mat-form-field>
+      </div>
+      <div class="col-xs">
+        <mat-form-field>
+          <mat-label>Código postal</mat-label>
+          <input
+            matInput
+            placeholder="Código postal"
+            formControlName="postal_code"
+            (keyup)="emit()"
+          />
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs mr-5">
+        <p class="f-500 n-margin">Domicilio Laboral:</p>
+      </div>
+      <!-- <div class="col-xs mr-5">
+        <app-get-files
+          (files)="setFileLaboral($event)"
+          types="application/pdf"
+          text="Subir archivo"
+        ></app-get-files>
+      </div>
+      <div class="col-xs mr-5">
+        <app-list-files
+          [files]="archivoLaboral"
+          (getFiles)="setFileLaboral($event)"
+        ></app-list-files>
+      </div> -->
+    </div>
+    <div class="row">
+      <div class="col-xs">
+        <mat-form-field>
+          <mat-label>Calle</mat-label>
+          <input matInput placeholder="Calle" formControlName="work_street" (keyup)="emit()" />
+        </mat-form-field>
+      </div>
+      <div class="col-xs">
+        <mat-form-field>
+          <mat-label>Numero</mat-label>
+          <input
+            matInput
+            placeholder="Numero"
+            formControlName="work_ext_number"
+            (keyup)="emit()"
+          />
+        </mat-form-field>
+      </div>
+      <div class="col-xs">
+        <mat-form-field>
+          <mat-label>Colonia</mat-label>
+          <input matInput placeholder="Colonia" formControlName="work_colony" (keyup)="emit()" />
+        </mat-form-field>
+      </div>
+      <div class="col-xs">
+        <mat-form-field>
+          <mat-label>Ciudad</mat-label>
+          <input matInput placeholder="Ciudad" formControlName="work_city" (keyup)="emit()" />
+        </mat-form-field>
+      </div>
+      <div class="col-xs">
+        <mat-form-field>
+          <mat-label>Delegación</mat-label>
+          <input
+            matInput
+            placeholder="Delegación"
+            formControlName="work_municipality"
+            (keyup)="emit()"
+          />
+        </mat-form-field>
+      </div>
+      <div class="col-xs">
+        <mat-form-field>
+          <mat-label>Estado</mat-label>
+          <input matInput placeholder="Estado" formControlName="work_state" (keyup)="emit()" />
+        </mat-form-field>
+      </div>
+      <div class="col-xs">
+        <mat-form-field>
+          <mat-label>Código postal</mat-label>
+          <input
+            matInput
+            placeholder="Código postal"
+            formControlName="work_postal_code"
+            (keyup)="emit()"
+          />
+        </mat-form-field>
+      </div>
+    </div>
+  </form>
+</div>

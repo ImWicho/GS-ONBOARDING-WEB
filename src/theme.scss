@@ -1,0 +1,23 @@
+@import '~@angular/material/theming';
+@import './palette.scss';
+
+@include mat-core();
+
+// LIGHT THEME
+
+$template-primary-light: mat-palette($md-mcgpalette0);
+$template-accent-light: mat-palette($md-mcgpalette1);
+$template-warn-light: mat-palette($mat-deep-orange);
+
+//A200, A100, A400
+
+
+$template-theme-light: mat-light-theme((
+  color: (
+    primary: $template-primary-light,
+    accent: $template-accent-light,
+    warn: $template-warn-light,
+  )
+));
+
+@include angular-material-theme($template-theme-light);

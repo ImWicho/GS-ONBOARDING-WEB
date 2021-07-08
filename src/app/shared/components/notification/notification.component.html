@@ -1,0 +1,19 @@
+<div class="row center-xs" style="margin: 20px 0;">
+  <mat-icon
+    [ngClass]="{'color-green' : data.correct, 'color-red' : !data.correct }"
+    [svgIcon]="data.correct ? 'check-circle-outline' : 'close-circle'">
+  </mat-icon>
+</div>
+<div class="row">
+  <div class="col-xs center-xs">
+    <h2 class="color-blue">{{ data.title }}</h2>
+  </div>
+</div>
+<div class="row" style="margin: 15px 0;">
+  <div class="col-xs center-xs">
+    <h3>{{ data.msg }}</h3>
+  </div>
+</div>
+<div class="row center-xs">
+  <button mat-flat-button color="primary" (click)="onClose()">Aceptar</button>
+</div>

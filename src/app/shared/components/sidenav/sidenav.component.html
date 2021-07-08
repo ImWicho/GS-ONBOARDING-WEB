@@ -1,0 +1,20 @@
+<ol>
+  <!-- PROSPECTO -->
+  <li class="item" *ngIf="+user === 1" routerLink="/inicio/prospecto" routerLinkActive="active">
+    <mat-icon class="icon-margin" svgIcon="home-outline"></mat-icon>Incio
+  </li>
+
+  <!-- Autorizador -->
+  <li class="item" *ngIf="+user === 2" routerLink="/inicio/autorizador" routerLinkActive="active">
+    <mat-icon class="icon-margin" svgIcon="home-outline"></mat-icon>Incio
+  </li>
+
+
+  <!-- EMISOR -->
+  <li class="item" *ngIf="+user === 3" routerLink="/inicio/emisor" routerLinkActive="active">
+    <mat-icon class="icon-margin" svgIcon="home-outline"></mat-icon>Incio
+  </li>
+  <li class="item" *ngIf="+user === 1" routerLink="/inicio/registrar-solicitante" routerLinkActive="active">
+    <mat-icon class="icon-margin" svgIcon="account-plus-outline"></mat-icon>Registrar solicitud
+  </li>
+</ol>
